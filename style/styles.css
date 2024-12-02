@@ -1,0 +1,325 @@
+/* Define CSS variables for colors, font sizes, and width */
+:root {
+  --main-color: #FF6B82;
+  --active-color: #f44e83;
+  --bg-color: #FFF9FA;
+  --border-color: #C8C8C8;
+  --highlight-color: #ff527b;
+  --font-color: #333;
+  --font-size-large: 25px;
+  --font-size-medium: 20px;
+  --font-size-small: 16px;
+  --card-width: 60%;
+  --mobile-width: 90%;
+}
+
+/* Basic resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--card-width);
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 20px 10px;
+  font-weight: 600;
+  color: var(--main-color);
+  font-size: var(--font-size-large);
+}
+
+.horizontal-line {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 10px 0;
+  flex: 1;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  width: var(--card-width);
+  margin: 0 auto;
+}
+
+/* Plan Card Container */
+.plan-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  border: 0.9px solid var(--border-color);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  margin: 10px 0;
+  padding: 30px;
+}
+
+.plan-card.active {
+  border: 2px solid var(--main-color);
+  background: var(--bg-color);
+  box-shadow: 0 4px 8px rgba(255, 91, 140, 0.3);
+}
+
+.plan-card-tag {
+  position: absolute;
+  top: -15px;
+  right: 16px;
+  background-color: var(--main-color);
+  color: white;
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.plan-card-tag::before,
+.plan-card-tag::after {
+  content: '';
+  position: absolute;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.plan-card-tag::after {
+  right: -14.5px;
+  top: 7px;
+  border-width: 15px 0px 0px 15px;
+  border-color: transparent transparent transparent #D7445B ;
+}
+
+.plan-card-tag::before {
+  left: -14.5px;
+  top: 7px;
+  border-width: 0 0 15px 15px;
+  border-color: transparent transparent #D7445B transparent;
+}
+
+.plan-card-tag.inactive {
+  display: none;
+}
+
+.plan-card-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.plan-card-info-details {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+  flex: 1;
+}
+
+.plan-card-info-details-name {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.plan-card-info-details-name span {
+  background-color: var(--main-color);
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: var(--font-size-medium);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.plan-card-info-details-description {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  text-align: left;
+}
+
+.plan-card-info-details-description.inactive {
+  display: none;
+}
+
+.plan-card-info-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card-info-price-new {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  text-align: left;
+}
+
+.plan-card-info-price-old {
+  font-size: var(--font-size-small);
+  text-align: left;
+  text-decoration: line-through;
+  color: var(--border-color);
+}
+
+/* Plan Option */
+.plan-card-input {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plan-card-input .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.plan-card-input label {
+  font-size: var(--font-size-small);
+  color: var(--font-color);
+  font-weight: bold;
+}
+
+.plan-card-input select {
+  width: 100px;
+  padding: 5px;
+  font-size: var(--font-size-small);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #555;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.plan-card-input select:hover {
+  border-color: var(--highlight-color);
+}
+
+.plan-card-input select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 5px rgba(255, 82, 123, 0.5);
+}
+
+/* Plan Summary Section */
+.plan-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.plan-summary-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.plan-summary-text {
+  font-size: var(--font-size-large);
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+.plan-summary-price {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  background-color: var(--main-color);
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e03e73;
+}
+
+/* Footer */
+.footer-text {
+  text-align: right;
+  font-size: var(--font-size-small);
+  color: #00000066;
+  margin: 20px auto;
+  width: var(--card-width);
+}
+
+input[type="radio"]:checked {
+  accent-color: var(--active-color);
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  body {
+    padding: 0 20px;
+  }
+
+  header, .container, .footer-text {
+    width: var(--mobile-width);
+  }
+
+  h1 {
+    font-size: var(--font-size-medium);
+  }
+
+  .plan-card {
+    padding: 20px;
+  }
+
+  .plan-card-info-details-name {
+    font-size: var(--font-size-medium);
+  }
+
+  .plan-card-info-price-new, .plan-summary-text, .plan-summary-price {
+    font-size: var(--font-size-medium);
+  }
+
+  .plan-card-info-details-description {
+    font-size: var(--font-size-small);
+  }
+
+  .plan-card-input select {
+    font-size: var(--font-size-small);
+  }
+
+  .add-to-cart-btn {
+    font-size: 1rem;
+  }
+}

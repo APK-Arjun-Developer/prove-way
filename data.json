@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "1 Unit",
+      "discount": "10% Off",
+      "newPrice": "$10.00 USD",
+      "oldPrice": "$24.00 USD",
+      "description": "Standard Price",
+      "tag": ""
+    },
+    {
+      "id": "2",
+      "name": "2 Units",
+      "discount": "20% Off",
+      "newPrice": "$18.00 USD",
+      "oldPrice": "$24.00 USD",
+      "description": "",
+      "tag": "MOST POPULAR"
+    },
+    {
+      "id": "3",
+      "name": "3 Units",
+      "discount": "30% Off",
+      "newPrice": "$24.00 USD",
+      "oldPrice": "$24.00 USD",
+      "description": "",
+      "tag": ""
+    }
+  ]
+}
